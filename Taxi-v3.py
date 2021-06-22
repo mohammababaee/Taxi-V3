@@ -10,7 +10,7 @@ env = gym.make("Taxi-v3").env
 
 q_table = numpy.zeros([env.observation_space.n, env.action_space.n]) # Creating our Q-table
 
-training_times = 3000 
+training_times = 10000
 display_times = 5
 
 alpha = 0.1
