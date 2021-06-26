@@ -2,15 +2,27 @@ import gym
 import numpy
 import random
 from time import sleep
+from os import system, name
 
 env = gym.make("Taxi-v3").env
 
+def clear(): 
+  
+    # Clear on Windows.
+    if name == 'nt': 
+        _ = system('cls')
+  
+    # Clear on Mac and Linux. (os.name is 'posix') 
+    else: 
+        _ = system('clear')
+
+clear()
 # states = 500 (5 * 5 environment * 4 destination * 5 passenger locations)
 # actions = 6 (south , north , east , west , pickup , dropoff)
 
 q_table = numpy.zeros([env.observation_space.n, env.action_space.n]) # Creating our Q-table
 
-training_times = 3000 
+training_times = 10000
 display_times = 5
 
 alpha = 0.1
@@ -68,7 +80,9 @@ for display in range(display_times):
             penalties += 1
 
         epochs += 1
+        clear()
         env.render()
+        
         print("Timestep: " + str(epochs))
         print("State: " + str(state))
         print("Action: "  + str(action))
