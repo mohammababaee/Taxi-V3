@@ -22,7 +22,7 @@ clear()
 
 q_table = numpy.zeros([env.observation_space.n, env.action_space.n]) # Creating our Q-table
 
-training_times = 10000
+training_times = 30000
 display_times = 5
 
 alpha = 0.1
@@ -59,7 +59,7 @@ for train in range(training_times):
             print(f"Episode: {train}")
 
 print("Training finished.\n")
-sleep(5)
+sleep(1)
 
 
 
@@ -82,7 +82,6 @@ for display in range(display_times):
         epochs += 1
         clear()
         env.render()
-        
         print("Timestep: " + str(epochs))
         print("State: " + str(state))
         print("Action: "  + str(action))
